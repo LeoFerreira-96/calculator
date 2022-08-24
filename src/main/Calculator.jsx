@@ -1,3 +1,4 @@
+/*eslint-disable no-eval */
 import React, { Component } from 'react'
 import './Calculator.css'
 
