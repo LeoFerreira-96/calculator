@@ -6,59 +6,47 @@ import './Calculator.css'
 
 const Calculator = () => {
     
-    const [initialState, setInitialState] = useState({
-        clearDisplay: false,
+    const [memory, setMemory] = useState({
+        clear: false,
         operation: null,
-        firstValue: null,
-        secondValue: null,
+        Fvalue: null,
+        Svalue: null,
         current: 0,
     })
 
     const clearMemory = () => {
-        setInitialState({ ...initialState })
+        setMemory({ ...memory })
     }
 
-    const Operation = (operation) => {
-        console.log(operation)
+    const operation = (params) => {
+        console.log(params)
     }
             
-    const addDigit = (n) => {
-        console.log(n)
-        if(initialState.operation === null) {
-            if(initialState.firstValue === null) {
-                console.log(n)
-            }else{
-                console.log(n)
-            }
-        }else {
-            if(initialState.secondValue === null) {
-                console.log(n)
-            }else{
-                console.log(n)
-            }
-        }
+    const handleAdd = (params) => {
+        console.log(params)
+        
     }
 
     return (
     <div className="calculator">
-    <Display value={initialState.current} />
+    <Display value={memory.current} />
     <Button label="AC" click={clearMemory} triple />
-    <Button label="/" click={Operation} operation />
-    <Button label="7" click={addDigit} />
-    <Button label="8" click={addDigit} />
-    <Button label="9" click={addDigit} />
-    <Button label="*" click={Operation} operation />
-    <Button label="4" click={addDigit} />
-    <Button label="5" click={addDigit} />
-    <Button label="6" click={addDigit} />
-    <Button label="-" click={Operation} operation />
-    <Button label="1" click={addDigit} />
-    <Button label="2" click={addDigit} />
-    <Button label="3" click={addDigit} />
-    <Button label="+" click={Operation} operation />
-    <Button label="0" click={addDigit} double />
-    <Button label="." click={addDigit} />
-    <Button label="=" click={Operation} operation />
+    <Button label="/" click={operation} operation />
+    <Button label="7" click={handleAdd} />
+    <Button label="8" click={handleAdd} />
+    <Button label="9" click={handleAdd} />
+    <Button label="*" click={operation} operation />
+    <Button label="4" click={handleAdd} />
+    <Button label="5" click={handleAdd} />
+    <Button label="6" click={handleAdd} />
+    <Button label="-" click={operation} operation />
+    <Button label="1" click={handleAdd} />
+    <Button label="2" click={handleAdd} />
+    <Button label="3" click={handleAdd} />
+    <Button label="+" click={operation} operation />
+    <Button label="0" click={handleAdd} double />
+    <Button label="." click={handleAdd} />
+    <Button label="=" click={operation} operation />
 </div>)
 }
     
