@@ -1,5 +1,6 @@
-import React from 'react'
-import './Display.css'
+import React from "react";
+import "./Display.css";
 
-export default ({value}) =>
-<div className="display">{value}</div>
+const Display = ({ value }) => <div className="display">{value}</div>;
+
+export default Display;
