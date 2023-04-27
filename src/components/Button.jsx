@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Button.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faTimes,
+  faDivide,
+  faMinus,
+  faEquals,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Button = ({ operation, double, triple, label, onClick }) => {
   let className = "button";
@@ -14,9 +22,30 @@ const Button = ({ operation, double, triple, label, onClick }) => {
     className += " triple";
   }
 
+  let icon;
+  switch (label) {
+    case "+":
+      icon = <FontAwesomeIcon icon={faPlus} />;
+      break;
+    case "-":
+      icon = <FontAwesomeIcon icon={faMinus} />;
+      break;
+    case "*":
+      icon = <FontAwesomeIcon icon={faTimes} />;
+      break;
+    case "/":
+      icon = <FontAwesomeIcon icon={faDivide} />;
+      break;
+    case "=":
+      icon = <FontAwesomeIcon icon={faEquals} />;
+      break;
+    default:
+      icon = label;
+  }
+
   return (
     <button className={className} onClick={() => onClick(label, operation)}>
-      {label}
+      {icon}
     </button>
   );
 };
