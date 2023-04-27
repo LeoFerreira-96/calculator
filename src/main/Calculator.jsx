@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Display from "../components/Display";
 import "./Calculator.css";
@@ -79,6 +79,42 @@ const Calculator = () => {
     });
   };
 
+  const handleKeyDown = (e) => {
+    console.log("Nhapo", e.key);
+    switch (e.key) {
+      case "Escape":
+        clearMemory();
+        break;
+      case "+":
+        setOperation("+");
+        break;
+      case "-":
+        setOperation("-");
+        break;
+      case "*":
+        setOperation("*");
+        break;
+      case "/":
+        setOperation("/");
+        break;
+      case "Enter":
+        setOperation("=");
+        break;
+      default:
+        const key = parseInt(e.key);
+        if (!isNaN(key)) {
+          appendDigit(key);
+        }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
+
   return (
     <div className="calculator">
       <Display value={memory.current} />
@@ -97,7 +133,7 @@ const Calculator = () => {
       <Button label="3" onClick={() => appendDigit("3")} />
       <Button label="+" onClick={() => setOperation("+")} operation />
       <Button label="0" onClick={() => appendDigit("0")} double />
-      <Button label="." onClick={appendDecimal} />
+      <Button label="," onClick={appendDecimal} />
       <Button label="=" onClick={calculate} operation />
     </div>
   );
