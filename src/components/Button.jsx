@@ -1,16 +1,32 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Button.css";
 
-const Buttom = ({ operation, double, triple, label, click }) => {
-  let classes = "button";
-  classes += operation ? " operation" : "";
-  classes += double ? " double" : "";
-  classes += triple ? " triple" : "";
+const Button = ({ operation, double, triple, label, onClick }) => {
+  let className = "button";
+  if (operation) {
+    className += " operation";
+  }
+  if (double) {
+    className += " double";
+  }
+  if (triple) {
+    className += " triple";
+  }
+
   return (
-    <button onClick={(e) => click(label, operation)} className={classes}>
+    <button className={className} onClick={() => onClick(label, operation)}>
       {label}
     </button>
   );
 };
 
-export default Buttom;
+Button.propTypes = {
+  operation: PropTypes.bool,
+  double: PropTypes.bool,
+  triple: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+export default Button;

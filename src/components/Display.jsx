@@ -1,6 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Display.css";
 
-const Display = ({ value }) => <div className="display">{value}</div>;
+const Display = ({ value }) => {
+  return <div className="display">{value}</div>;
+};
+
+Display.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default Display;
